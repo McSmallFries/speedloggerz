@@ -12,10 +12,7 @@ func LoadAppGlobals() error {
 }
 
 func CreateOrUpdateUser(user models.User) (error, int64) {
-	err, connection := database.InitialiseDatabaseConn()
-	if err != nil {
-		return err, 0
-	}
+	connection := database.Config.Connection
 	tx := connection.Db.MustBegin()
 	id, err := user.Insert(tx)
 	if err != nil {
