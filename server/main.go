@@ -5,14 +5,16 @@ import (
 	"SpeedLoggerz/server/routes"
 	"SpeedLoggerz/server/utils"
 	"fmt"
+	"net/http"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"net/http"
 )
 
 func main() {
 	version := "0.0.0.1"
 	port := 555
+	portString := fmt.Sprintf("%s%d", ":", port)
 
 	_ = utils.Load()
 
@@ -44,6 +46,6 @@ func main() {
 
 	// e.GET("/ws/", ws.WsHandler)  // might need websocket, might not.
 
-	e.Logger.Fatal(e.Start(fmt.Sprintf("%s%d", ":", port)))
-	http.ListenAndServe(":555", nil)
+	e.Logger.Fatal(e.Start(portString))
+	http.ListenAndServe(portString, nil)
 }
