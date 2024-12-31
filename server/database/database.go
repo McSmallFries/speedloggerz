@@ -4,13 +4,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-/* Only needed for when multiple schemas are in play. */
-//type DatabaseConnection struct {
-//  Host     string
-//  IsMaster bool
-//  Db       *sqlx.DB
-//}
-
+// Configuration /* Only needed for when multiple schemas are in play. */
 type Configuration struct {
 	User       string
 	Password   string

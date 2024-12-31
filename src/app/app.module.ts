@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {SignupComponent} from './sign-up/signup.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SpeedloggerzService} from './service/speedloggerz.service';
+import { AppGlobalService } from './service/globals.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {SpeedloggerzService} from './service/speedloggerz.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard, SpeedloggerzService],
+  providers: [AuthGuard, SpeedloggerzService, AppGlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
