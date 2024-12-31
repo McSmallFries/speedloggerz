@@ -27,5 +27,9 @@ func (u *User) Insert(db *sqlx.Tx) (id int64, err error) {
 
 	}
 	u.IdUser, err = res.LastInsertId()
+	if err != nil {
+		return 0, err
+	}
+	db.Commit()
 	return u.IdUser, err
 }

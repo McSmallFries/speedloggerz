@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import {SpeedloggerzService} from '../service/speedloggerz.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,16 +12,19 @@ export class DashboardComponent implements OnInit {
 
   id: string;
 
-
   constructor(private router: Router,
-              public authService: AuthService,
-              private speedloggers: SpeedloggerzService) { }
+    public authService: AuthService,
+    private speedloggers: SpeedloggerzService) { }
 
   ngOnInit() {
   	this.id = localStorage.getItem('token');
+    if (!this.id)  {
+      this.logout();
+    }
   }
    logout(): void {
     console.log("Logout");
+    this.authService.logout();
     this.authService.logoutva();
     this.router.navigate(['/login']);
   }

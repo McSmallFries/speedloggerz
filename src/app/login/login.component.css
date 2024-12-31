@@ -1,0 +1,11 @@
+.login-container  {
+  background-color: #222;
+  border-color: #080808;
+  border-radius: 6px;
+  width: auto;
+  color: white;
+}
+
+.loginBox  {
+  align-content: center;
+}

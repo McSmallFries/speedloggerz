@@ -15,9 +15,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-            <li routerLinkActive="active"><a routerLink="/register">Sign-up</a></li>
-            <li routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
+            <li *ngIf="!isUserLoggedIn" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+            <li *ngIf="!isUserLoggedIn" routerLinkActive="active"><a routerLink="/register">Sign-up</a></li>
+            <li *ngIf="isUserLoggedIn" routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->

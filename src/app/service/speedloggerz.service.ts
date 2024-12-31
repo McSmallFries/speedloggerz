@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../models/login';
+
 // import { ILogin } from './login';
 
 @Injectable({
@@ -13,11 +14,11 @@ export class SpeedloggerzService {
   constructor(private http: HttpClient) { }
 
   async RegisterUser(user: User)  {
-    debugger;
-    const url = `${this.databaseURL}/register/`;
-    await this.http.post(url, user).toPromise().then(p => {
-      return p;
-    });
-
+    const url = `${this.databaseURL}/register`;
+    try {
+      return await this.http.post<number>(url, user).toPromise();
+    } catch {
+      return Promise.reject('error.');
+    }
   }
 }
